@@ -1,0 +1,7 @@
+---
+- name: Setup nginx and swap
+  hosts: all
+  become: yes
+  remote_user: ubuntu
+  roles:
+  - webserver

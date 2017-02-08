@@ -1,0 +1,39 @@
+server {
+	listen 80;
+	root {{ doc_root }};
+        add_header X-Frame-Options SAMEORIGIN;
+        add_header X-Content-Type-Options nosniff;
+        add_header X-XSS-Protection "1; mode=block";
+        server_name {{ domain_name }};
+        access_log /var/log/nginx/{{ domain_name }}.log;
+        error_log /var/log/nginx/{{ domain_name }}-error.log error;
+	location / {
+#		try_files $uri $uri/ /index.php?$args ;
+        index index.html;
+	}
+location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                expires max;
+                log_not_found off;
+        }
+location ~ /(build.xml|composer.json|composer.phar|generator.php|lib|phing|README.md) { 
+     access_log off; 
+     log_not_found off; 
+     deny all; 
+   }
+
+location ~* (init|composer.json|composer.lock)$ {
+     access_log off; log_not_found off; deny all; 
+    }
+location ~* \.(bak|bat|config|sql|fla|md|psd|ini|log|sh|inc|swp|dist)$ {
+access_log off;
+log_not_found off;
+deny all;
+}
+
+location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+}

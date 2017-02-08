@@ -1,0 +1,7 @@
+---
+# vars file for webserver
+doc_root: /var/www/example.com
+serverconfig: /jinja2tmp/
+domain_name: example.com
+username: user1
+userpass: $1$9AvQmC$d5v9VuBazYnKjNRkHypXR1
