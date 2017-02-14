@@ -17,3 +17,5 @@ localhost roles # tree
         │   └── index.html.j2
         └── vars
             └── main.yml
+            
+    ansible-playbook --private-key=/root/key/privatekey.pem /etc/ansible/roles/site.yml
