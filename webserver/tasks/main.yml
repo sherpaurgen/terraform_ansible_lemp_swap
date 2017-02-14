@@ -9,8 +9,10 @@
   apt_repository: repo='deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' state=present
 
 - name: add GPG key for nginx
-  script: /etc/ansible/roles/webserver/files/nginxkeyadd.sh 
-
+  script: /etc/ansible/roles/webserver/files/nginxkeyadd.sh
+- name: Update apt-cache
+  apt:
+    update_cache: yes
 - name: Install nginx on target
   apt: name={{ item }} state=latest
   with_items:
