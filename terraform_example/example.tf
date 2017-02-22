@@ -11,9 +11,9 @@ public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/yQDcmbanz52HXDboooHG94RSbZ
 }
 
 resource "aws_instance" "example" {
-  ami           = "ami-0d729a60"
+  ami           = "ami-0927dc1f"
   instance_type = "t2.micro"
-  subnet_id = "ami-0927dc1f"
+  subnet_id = "subnet-7b5c8820"
   key_name = "${aws_key_pair.urgenaccess.key_name}"
 
   provisioner "local-exec" {
