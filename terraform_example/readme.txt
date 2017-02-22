@@ -10,3 +10,6 @@ https://groups.google.com/forum/#!topic/terraform-tool/LlG3jJJwvo8
 https://groups.google.com/forum/#!msg/terraform-tool/7Gdhv1OAc80/iNQ93riiLwAJ
 http://blog.testable.io/post/138019717263/create-an-aws-auto-scaling-group-with-terraform
 https://robmorgan.id.au/posts/rolling-deploys-on-aws-using-terraform/
+
+terraform plan -destroy  #check
+terrafrom destroy #destroy infrastructure created with this terraform
