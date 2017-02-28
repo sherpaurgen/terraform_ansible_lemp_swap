@@ -35,3 +35,16 @@ To do that, make an ansible.cfg file in one of those locations, and include this
 [defaults]
 host_key_checking = False
 You can also set a lot of other handy defaults there, like whether or not to gather facts at the start of a play, whether to merge hashes declared in multiple places or replace one with another, and so on. There's a whole big list of options here in the Ansible docs.
+
+
+
+http://jesseszwedko.com/post/ansible-aws-launch-configuration/
+#!/bin/bash
+
+aws ec2 describe-instances \
+  --filters "Name=tag:Database,Values=true" \
+  --query 'Reservations[*].Instances[*].PrivateDnsName' \
+  --output text \
+  > /etc/databases
+
+systemctl start my-webservice
