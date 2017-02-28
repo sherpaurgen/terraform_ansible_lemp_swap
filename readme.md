@@ -41,10 +41,10 @@ You can also set a lot of other handy defaults there, like whether or not to gat
 http://jesseszwedko.com/post/ansible-aws-launch-configuration/
     #!/bin/bash
 
-   aws ec2 describe-instances \
-   --filters "Name=tag:Database,Values=true" \
-   --query 'Reservations[*].Instances[*].PrivateDnsName' \
-   --output text \
-   > /etc/databases
+    aws ec2 describe-instances \
+    --filters "Name=tag:Database,Values=true" \
+    --query 'Reservations[*].Instances[*].PrivateDnsName' \
+    --output text \
+    > /etc/databases
 
     systemctl start my-webservice
