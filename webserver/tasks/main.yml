@@ -24,10 +24,10 @@
 - name: create www directory
   file: path={{ doc_root }} state=directory recurse=yes owner=root group=root mode=0755
 - name: setup helloapp site
-  template: src=helloworld.conf.j2 dest=/etc/nginx/conf.d/example.com.conf mode=0644
+  template: src=/root/play/webserver/templates/helloworld.conf.j2 dest=/etc/nginx/conf.d/example.com.conf mode=0644
   notify: reload nginx
 - name: setup index file
-  template: src=index.html.j2 dest={{ doc_root }}/index.html mode=0644
+  template: src=/root/play/webserver/templates/index.html.j2 dest={{ doc_root }}/index.html mode=0644
   notify: reload nginx
 - name: Create swap file 50MB
   script: /root/play/webserver/files/createswap.sh
