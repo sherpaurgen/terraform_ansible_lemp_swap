@@ -9,7 +9,7 @@
   apt_repository: repo='deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' state=present
 
 - name: add GPG key for nginx
-  script: /root/play/webserver/files/nginxkeyadd.sh
+  script: /etc/ansible/roles/webserver/files/nginxkeyadd.sh
 - name: Update apt-cache
   apt:
     update_cache: yes
@@ -23,13 +23,11 @@
   service: name=nginx state=started
 - name: create www directory
   file: path={{ doc_root }} state=directory recurse=yes owner=root group=root mode=0755
-- name: setup helloapp site
-  template: src=/root/play/webserver/templates/helloworld.conf.j2 dest=/etc/nginx/conf.d/example.com.conf mode=0644
+- name: Setup Helloapp Site
+  template: src=helloworld.conf.j2 dest=/etc/nginx/conf.d/example.com.conf mode=0644
   notify: reload nginx
 - name: setup index file
-  template: src=/root/play/webserver/templates/index.html.j2 dest={{ doc_root }}/index.html mode=0644
+  template: src=index.html.j2 dest={{ doc_root }}/index.html mode=0644
   notify: reload nginx
 - name: Create swap file 50MB
-  script: /root/play/webserver/files/createswap.sh
-
-
+  script: /etc/ansible/roles/webserver/files/createswap.sh
