@@ -9,7 +9,7 @@
   apt_repository: repo='deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' state=present
 
 - name: add GPG key for nginx
-  script: /etc/ansible/roles/webserver/files/nginxkeyadd.sh
+  script: /root/play/webserver/files/nginxkeyadd.sh
 - name: Update apt-cache
   apt:
     update_cache: yes
@@ -30,6 +30,6 @@
   template: src=index.html.j2 dest={{ doc_root }}/index.html mode=0644
   notify: reload nginx
 - name: Create swap file 50MB
-  script: /etc/ansible/roles/webserver/files/createswap.sh
+  script: /root/play/webserver/files/createswap.sh
 
 
